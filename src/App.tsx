@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import QuestionsContainer from './components/QuestionsContainer';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Home from "./components/Home";
+import ApplicationBar from "./components/ApplicationBar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// export const BASE_URL = "https://iquiz-app.herokuapp.com/";
+export const BASE_URL = "https://cdn.jsdelivr.net/gh/msusman1/devineScript/";
+// export const BASE_URL = "http://localhost:8181/";
+
+
+export default function App() {
+    return (
+        <BrowserRouter>
+            <ApplicationBar/>
+            <Switch>
+                <Route path="/topic/:topicId" children={<QuestionsContainer/>}/>
+                <Route path="/" children={<Home/>}/>
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
-export default App;
+
+
+
+
